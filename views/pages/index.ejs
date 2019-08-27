@@ -14,7 +14,29 @@
 </header>
 
 <body>
+  <form action="book-search" method="POST">
+    <fieldset>
+      <legend>Search by Title or Author</legend>
+      <label for="search">
+        <!-- my request.body will have a property of title as of this line -->
+        <span>Title</span>
+        <input type="radio" name="search" value="title">
+      </label>
 
+      <label for="search">
+        <!-- my request.body will have a property of author as of this line -->
+        <span>Author</span>
+        <input type="radio" name="search" value="author">
+      </label>
+
+      <label for="search">
+        <input type="text" name="search" placeholder="insert book name or author">
+      </label>
+    </fieldset>
+
+
+
+  </form>
 </body>
 
 <footer>
