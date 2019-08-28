@@ -1,59 +1,75 @@
 # book_app
 
 
+Authors: Susanna Lakey & Adrian Huebner
 
-Number and name of feature: ________________________________
+Number and name of feature: Setting up Scaffold and Testing
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 9:10
 
-Finish time: _____
+Finish time: 9:50
 
-Actual time needed to complete: _____
-
-
-
-Number and name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
+Actual time needed to complete: 40 mins
 
 
 
-Number and name of feature: ________________________________
+Number and name of feature: Add a search form
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 45 mins
 
-Start time: _____
+Start time: 9:50
 
-Finish time: _____
+Finish time: 10:10
 
-Actual time needed to complete: _____
+Actual time needed to complete: 20 mins
+
+
+
+Number and name of feature: Render array of book items to page
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 10:10 (1hr break for lunch)
+
+Finish time: 1:20pm
+
+Actual time needed to complete:  2 hrs 30mins
 
 
 
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code 301 class. (i.e. What's your problem domain?) -->
+* This application pulls in data from Google books and renders a listing for each book.
+* The data is based up a searach result from the user of a book title or book author.
+* Each book listing includes an image, title, author, description, number of pages, category, and average rating.
+* The books are rendered to the page using ejs
+
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+* Initialize npm and npm install express, superagent, and ejs.
+* Create and listen to a PORT
+* Create a form allowing a user to search by Title or Author
+* Use that form to pull in data from google books
+* Create a constructor function for each piece of data you would like to include
+* Map over the constructor and render it to the page
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+* Technologies used
+  * express
+  * superagent
+  *ejs
+
+* Languages used
+  * JavaScript
+  * Css
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+08-27-19 9:50am - Scaffold in place
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
+08-27-19 10:10am - Added search form
 
-## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+08-27-19 1:30pm - Added constructor function, mapped over it, and render each book item to the page.
 -->
