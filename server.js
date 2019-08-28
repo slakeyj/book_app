@@ -79,12 +79,14 @@ function searchForBook(request, response) {
         info.averageRating
       );
     })
-    // bookGallery.forEach(book => {
-    //   const sqlQueryInsert = `INSERT INTO bookdata (image_url, title, author, isbn, description, numberOfPages, averageRating, bookshelf) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);`
-    //   const sqlValueArr = [book.image_url, book.title, book.author, book.isbn, book.description, book.numberOfPages, book.averageRating, book.bookshelf];
-    //   client.query(sqlQueryInsert, sqlValueArr);
-    // })
-    response.render('pages/searches/showSearchResults', { books: bookGallery });
+    bookGallery.forEach(book => {
+      const sqlQueryInsert = `INSERT INTO bookdata (image_url, title, author, isbn, description, numberOfPages, averageRating, bookshelf) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);`
+      const sqlValueArr = [book.image_url, book.title, book.author, book.isbn, book.description, book.numberOfPages, book.averageRating, book.bookshelf];
+      return client.query(sqlQueryInsert, sqlValueArr)
+      .then(()=>{
+        response.redirect('/', { books: bookGallery })
+      });
+    })
   }) // }).catch(errorHandler);
 }
 
