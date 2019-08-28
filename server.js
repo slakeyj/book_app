@@ -24,6 +24,7 @@ function Book(image, title, author, description, numberOfPages, category, averag
   this.title = title ? title : 'N/A';
   this.author = author ? author : 'N/A';
   this.description = description ? description : 'N/A';
+  if (this.description.length > 254) this.description = this.description.slice(0, 250) + '...';
   this.numberOfPages = numberOfPages ? numberOfPages : 'N/A';
   this.category = category ? category : 'N/A';
   this.averageRating = averageRating ? averageRating : 'N/A';
@@ -52,11 +53,11 @@ function searchForBook(request, response) {
       const regex = /(http)/g;
       const info = book.volumeInfo;
       return new Book(
-        info.imageLinks && info.imageLinks.smallThumbnail.replace(regex, 'https'),
+        info.imageLinks && info.imageLinks.thumbnail.replace(regex, 'https'),
         info.title,
         info.authors,
         info.description,
-        info.pagecount,
+        info.pageCount,
         info.categories,
         info.averageRating
       );
