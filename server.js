@@ -4,6 +4,8 @@ const express = require('express');
 
 const superagent = require('superagent');
 
+require('dotenv').config()
+
 const pg = require('pg');
 
 const app = express();
@@ -82,10 +84,8 @@ function searchForBook(request, response) {
     bookGallery.forEach(book => {
       const sqlQueryInsert = `INSERT INTO bookdata (image_url, title, author, isbn, description, numberOfPages, averageRating, bookshelf) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);`
       const sqlValueArr = [book.image_url, book.title, book.author, book.isbn, book.description, book.numberOfPages, book.averageRating, book.bookshelf];
-      return client.query(sqlQueryInsert, sqlValueArr)
-      .then(()=>{
-        response.redirect('/', { books: bookGallery })
-      });
+      client.query(sqlQueryInsert, sqlValueArr)
+      response.render('/pages/showSearchResults', { books: bookGallery })
     })
   }) // }).catch(errorHandler);
 }
