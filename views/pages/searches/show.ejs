@@ -24,13 +24,17 @@
     <img src="<%= book.image %>" />
     <h2><%= book.title  %></h2>
     <h3><%= book.author  %></h3>
-    <p><%= book.isbn %></p>
     <p id="description"><%= book.description %></p>
     <section id="lower-box">
+
       <p id="pages">Total Pages: <%= book.numberOfPages %></p>
       <p id="rating">Avg Rating: <%= book.averageRating %></p>
+      <p><%= book.isbn %></p>
     </section>
-    <form action="/books/save" method="post">
+    <div>
+      <button class="save-button">Save</button>
+    </div>
+    <form class="hidden-form" action="/books/save" method="post">
       <input type="text" value="<%= book.image %>" name="image">
       <input type="text" value="<%= book.title %>" name="title">
       <input type="text" value="<%= book.author %>" name="author">
@@ -39,15 +43,16 @@
       <input type="text" value="<%= book.numberofpages %>" name="numberOfPages">
       <input type="text" value="<%= book.averagerating %>" name="averageRating">
       <input type="text" value="<%= book.bookshelf %>" name="bookshelf">
-      <div id="save-button">
-        <button>Save</button>
-      </div>
+
     </form>
   </section>
   <% }) %>
 
 
 </body>
-<footer></footer>
+
+<script src="app.js"></script>
+<footer>
+</footer>
 
 </html>
