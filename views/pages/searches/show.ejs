@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="/styles/reset.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/base.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/icons.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/layout.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/modules.css" type="text/css" rel="stylesheet" />
+  <title>Document</title>
+</head>
+<header>
+  <%- include('../nav') %>
+  <h1>Search Results</h1>
+</header>
+
+<body>
+
+  <% books.forEach(book => { %>
+  <section class="book-box">
+    <img src="<%= book.image %>" />
+    <h2><%= book.title  %></h2>
+    <h3><%= book.author  %></h3>
+    <p><%= book.isbn %></p>
+    <p id="description"><%= book.description %></p>
+    <section id="lower-box">
+      <p id="pages">Total Pages: <%= book.numberOfPages %></p>
+      <p id="rating">Avg Rating: <%= book.averageRating %></p>
+    </section>
+    <form action="/books/save" method="post">
+      <input type="hidden" value="<%= book.image %>" name="image">
+      <input type="hidden" value="<%= book.title %>" name="title">
+      <input type="hidden" value="<%= book.author %>" name="author">
+      <input type="hidden" value="<%= book.isbn %>" name="isbn">
+      <input type="hidden" value="<%= book.description %>" name="description">
+      <input type="hidden" value="<%= book.numberOfPages %>" name="numberOfPages">
+      <input type="hidden" value="<%= book.averageRating %>" name="averageRating">
+      <input type="hidden" value="" name="title">
+      <div id="save-button">
+        <button>Save</button>
+      </div>
+    </form>
+  </section>
+  <% }) %>
+
+
+</body>
+<footer></footer>
+
+</html>

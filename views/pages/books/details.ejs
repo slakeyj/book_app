@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -10,34 +10,27 @@
   <link href="/styles/icons.css" type="text/css" rel="stylesheet" />
   <link href="/styles/layout.css" type="text/css" rel="stylesheet" />
   <link href="/styles/modules.css" type="text/css" rel="stylesheet" />
-  <title>Book App</title>
+  <title>Document</title>
 </head>
 <header>
-  <%- include('./nav') %>
+  <%- include('../nav') %>
 </header>
 
 <body>
-
+  <h1>Details about your book</h1>
   <section class="book-box">
-    <% savedBooks.forEach(book => { %>
-    <img src="<%= book.image  %>" />
-    <h2><%= book.title  %></h2>
-    <h3><%= book.author  %></h3>
-    <!-- need to grab id for each book -->
-    <div class="button">
-      <a href="/books/<%= book.id %>">View Details</a>
-    </div>
-    <% }) %>
-
+    <img src="<%= specificBook.image %>" />
+    <h2><%= specificBook.title  %></h2>
+    <h3><%= specificBook.author  %></h3>
+    <h4><%= specificBook.isbn %></h4>
+    <p id="description"><%= specificBook.description %></p>
+    <section id="lower-box">
+      <p id="pages">Total Pages: <%= specificBook.numberOfPages %></p>
+      <p id="rating">Avg Rating: <%= specificBook.averageRating %></p>
+    </section>
 
 
   </section>
-
-
 </body>
-
-<footer>
-
-</footer>
 
 </html>
