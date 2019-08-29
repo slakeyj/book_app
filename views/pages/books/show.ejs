@@ -14,26 +14,10 @@
 </head>
 <header>
   <%- include('../nav') %>
-  <h1>Search Results</h1>
 </header>
 
 <body>
 
-  <% books.forEach(book => { %>
-  <section class="book-box">
-    <img src="<%= book.image %>" />
-    <h2><%= book.title  %></h2>
-    <h3><%= book.author  %></h3>
-    <p><%= book.isbn %></p>
-    <p id="description"><%= book.description %></p>
-    <section id="lower-box">
-      <p id="pages">Total Pages: <%= book.numberOfPages %></p>
-      <p id="rating">Avg Rating: <%= book.averageRating %></p>
-    </section>
-  </section>
-  <% }) %>
-
 </body>
-<footer></footer>
 
 </html>

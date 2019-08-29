@@ -64,7 +64,7 @@ Actual time needed to complete:  2 hrs 30mins
 
 * Languages used
   * JavaScript
-  * Css
+  * css
 
 ## Change Log
 08-27-19 9:50am - Scaffold in place
@@ -72,4 +72,3 @@ Actual time needed to complete:  2 hrs 30mins
 08-27-19 10:10am - Added search form
 
 08-27-19 1:30pm - Added constructor function, mapped over it, and render each book item to the page.
--->

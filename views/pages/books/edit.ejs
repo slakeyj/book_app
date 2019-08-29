@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="book-box">
+    <form id="update-form" action="/book/<%= specificBook.id %>/update" method="POST">
+      <input type="text" name="id" value="<%= specificBook.id %>">
+      <input type="text" name="_method" value="PUT">
+      <input type="hidden" value="<%= specificBook.image %>" name="image">
+      <input type="text" value="<%= specificBook.title %>" name="title">
+      <input type="text" value="<%= specificBook.author %>" name="author">
+      <input type="hidden" value="<%= specificBook.isbn %>" name="isbn">
+      <input type="text" value="<%= specificBook.description %>" name="description">
+      <input type="hidden" value="<%= specificBook.numberofpages %>" name="numberOfPages">
+      <input type="hidden" value="<%= specificBook.averagerating %>" name="averageRating">
+      <input type="text" value="<%= specificBook.bookshelf %>" name="bookshelf">
+      <a href="/"><button>Update Book</button></a>
+    </form>
+  </section>
+
+
+
+</body>
+
+</html>

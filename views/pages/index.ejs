@@ -16,30 +16,24 @@
   <%- include('./nav') %>
 </header>
 
-<body id="index-body">
-  <form action="book-search" method="POST">
-    <fieldset>
-      <legend>Search by Title or Author</legend>
-      <label for="search">
-        <!-- my request.body will have a property of title as of this line -->
-        <span>Title</span>
-        <input type="radio" name="search" value="title">
-      </label>
+<body>
 
-      <label for="search">
-        <!-- my request.body will have a property of author as of this line -->
-        <span>Author</span>
-        <input type="radio" name="search" value="author">
-      </label>
-
-      <label for="search">
-        <input type="text" name="search" placeholder="insert book name or author">
-      </label>
-    </fieldset>
+  <section class="book-box">
+    <% savedBooks.forEach(book => { %>
+    <img src="<%= book.image  %>" />
+    <h2><%= book.title  %></h2>
+    <h3><%= book.author  %></h3>
+    <!-- need to grab id for each book -->
+    <div class="button">
+      <a href="/books/<%= book.id %>">View Details</a>
+    </div>
+    <% }) %>
 
 
 
-  </form>
+  </section>
+
+
 </body>
 
 <footer>

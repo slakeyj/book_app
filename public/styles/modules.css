@@ -1,0 +1,24 @@
+.button { 
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 50px;
+  margin: auto;
+}
+
+.button a {
+  text-decoration: none;
+  color: rgb(237, 243, 245);
+}
+
+
+.
+
+button {
+  background-color: black;
+  color: white;
+  width: 200%;
+  height: 50px;
+}

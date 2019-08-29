@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="/styles/reset.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/base.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/icons.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/layout.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/modules.css" type="text/css" rel="stylesheet" />
+  <title>Document</title>
+</head>
+<header>
+  <%- include('../nav') %>
+</header>
+
+<body>
+  <h1>Details about your book</h1>
+  <section class="book-box">
+    <img src="<%= specificBook.image %>" />
+    <h2>Title: <%= specificBook.title  %></h2>
+    <h3>Author: <%= specificBook.author  %></h3>
+    <h4>ISBN: <%= specificBook.isbn %></h4>
+    <p id="description"><%= specificBook.description %></p>
+    <section id="lower-box">
+      <% console.log(specificBook) %>
+      <p id="pages">Total Pages: <%= specificBook.numberofpages %></p>
+      <p id="rating">Avg Rating: <%= specificBook.averagerating %></p>
+      <p id="rating">Bookshelf <%= specificBook.bookshelf %></p>
+    </section>
+    <a href="/book/<%= specificBook.id %>/update"><button>Update Book</button></a>
+    <form action="/book/<%= specificBook.id %>/delete" method="POST">
+      <input type="hidden" name="id" value="<%= specificBook.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>Delete Book</button>
+    </form>
+
+  </section>
+</body>
+
+</html>
