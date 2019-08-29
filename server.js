@@ -72,10 +72,7 @@ function savedBooks(request, response) {
   console.log(request.body.numberOfPages);
   const bookValues = [request.body.image, request.body.title, request.body.author, request.body.isbn, request.body.description, request.body.numberOfPages, request.body.averageRating, request.body.bookshelf]
 
-  client.query(insertValues, bookValues).then(() => {
-    //send back to the home page to show all of their saved books
-    response.redirect('/');
-  })
+  client.query(insertValues, bookValues);
 }
 
 
@@ -88,8 +85,8 @@ function updateBook(request, response) {
 }
 
 function editbook(request, response) {
-  const id = request.params.book_id;
-  console.log(id);
+  const id = request.params.id;
+
   client.query(`SELECT * FROM bookdata WHERE id=$1`, [id]).then(sqlResult => {
     response.render('./pages/books/edit', { specificBook: sqlResult.rows[0] });
   })
