@@ -48,6 +48,29 @@ form {
   width: 100%;
 }
 
+.button {
+  border-top: 1px solid #a161ba;
+  background: #9b82e0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#543e9c), to(#9b82e0));
+  background: -webkit-linear-gradient(top, #543e9c, #9b82e0);
+  background: -moz-linear-gradient(top, #543e9c, #9b82e0);
+  background: -ms-linear-gradient(top, #543e9c, #9b82e0);
+  background: -o-linear-gradient(top, #543e9c, #9b82e0);
+  padding: 17.5px 35px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: white;
+  font-size: 21px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+  }
+
 
 
 #index-body {
