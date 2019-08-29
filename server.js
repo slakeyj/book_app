@@ -2,9 +2,10 @@
 
 const express = require('express');
 const superagent = require('superagent');
-require('dotenv').config()
 const pg = require('pg');
 const app = express();
+const methodOverride = require('method-override');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3004;
 
@@ -12,6 +13,16 @@ const PORT = process.env.PORT || 3004;
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
+app.use(methodOverride((request, response) => {
+  //checking to see if _method exists in an object
+  if (request.body && typeof request.body === 'object' && '_method' in request.body) {
+    let method = request.body._method;
+    delete request.body._method;
+    return method;
+  }
+}));
+
+
 
 // Database Setup
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -26,6 +37,11 @@ app.get('/search', newSearch);
 app.post('/search', searchForBook);
 app.post('/books/save', savedBooks);
 app.get('/books/:book_id', singleBookInfo);
+app.delete('/book/:book_id/delete', deleteBook);
+
+app.get('/book/:book_id/update', editbook);
+app.put('/book/:book_id/update', updateBook)
+
 
 
 function Book(image, title, author, isbn, description, numberOfPages, averageRating) {
@@ -47,16 +63,15 @@ function getAllBooks(req, res) {
   })
 }
 
-
 function newSearch(request, response) {
   response.render('./pages/searches/new');
 }
 
 function savedBooks(request, response) {
-  const insertValues = `INSERT INTO bookdata (image, title, author, isbn, description, numberOfPages, averageRating) VALUES ($1, $2, $3, $4, $5, $6, $7);`;
-  const bookValues = [request.body.image, request.body.title[0], request.body.author, request.body.isbn, request.body.description, request.body.numberOfPages, request.body.averageRating]
-  //console.log('request.body.title', request.body.title[0]);
-  //console.log('bookValues', bookValues);
+  const insertValues = `INSERT INTO bookdata (image, title, author, isbn, description, numberOfPages, averageRating, bookshelf) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+  console.log(request.body.numberOfPages);
+  const bookValues = [request.body.image, request.body.title, request.body.author, request.body.isbn, request.body.description, request.body.numberOfPages, request.body.averageRating, request.body.bookshelf]
+
   client.query(insertValues, bookValues).then(() => {
     //send back to the home page to show all of their saved books
     response.redirect('/');
@@ -64,12 +79,37 @@ function savedBooks(request, response) {
 }
 
 
+function updateBook(request, response) {
+  const sqlUpdate = `UPDATE bookdata SET image=$2, title=$3, author=$4, isbn=$5, description=$6, numberofpages=$7, averagerating=$8, bookshelf=$9 where id=$1`
+  const sqlValues = [request.params.book_id, request.body.image, request.body.title, request.body.author, request.body.isbn, request.body.description, request.body.numberOfPages, request.body.averageRating, request.body.bookshelf]
+  client.query(sqlUpdate, sqlValues).then(sqlResult => {
+    response.redirect('/', { specificBook: sqlResult.rows[0] });
+  })
+}
+
+function editbook(request, response) {
+  const id = request.params.book_id;
+  console.log(id);
+  client.query(`SELECT * FROM bookdata WHERE id=$1`, [id]).then(sqlResult => {
+    response.render('./pages/books/edit', { specificBook: sqlResult.rows[0] });
+  })
+}
+
 // we access the ids from bookdata, taking the book_id selected and rendering that result to the details
 function singleBookInfo(request, response) {
   client.query(`SELECT * FROM bookdata WHERE id=$1`, [request.params.book_id]).then(sqlResult => {
     response.render('./pages/books/details', { specificBook: sqlResult.rows[0] });
   })
 }
+
+
+function deleteBook(request, response) {
+  const id = request.params.book_id;
+  client.query(`DELETE FROM bookdata WHERE id=$1`, [id])
+  response.redirect('/');
+}
+
+
 
 function searchForBook(request, response) {
   const searchType = request.body.search[0];

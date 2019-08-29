@@ -7,7 +7,7 @@ CREATE TABLE bookdata (
   author VARCHAR,
   isbn VARCHAR,
   description VARCHAR,
-  numberOfPages NUMERIC(10,7),
-  averageRating NUMERIC(10,7),
+  numberOfPages VARCHAR,
+  averageRating VARCHAR,
   bookshelf VARCHAR
 );
