@@ -17,7 +17,7 @@
 </header>
 
 <body>
-  <h1>Details about your book</h1>
+  <h1 class="titles">Book Details</h1>
   <section class="book-box">
     <img src="<%= specificBook.image %>" />
     <h2>Title: <%= specificBook.title  %></h2>
@@ -25,7 +25,6 @@
     <h4>ISBN: <%= specificBook.isbn %></h4>
     <p id="description"><%= specificBook.description %></p>
     <section id="lower-box">
-      <% console.log(specificBook) %>
       <p id="pages">Total Pages: <%= specificBook.numberofpages %></p>
       <p id="rating">Avg Rating: <%= specificBook.averagerating %></p>
       <p id="rating">Bookshelf <%= specificBook.bookshelf %></p>

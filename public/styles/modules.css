@@ -1,15 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen&display=swap');
+
+body {
+  font-family: 'Oxygen', sans-serif;
+}
+
+.titles {
+
+}
+
+
+
 .button a {
   text-decoration: none;
   color: rgb(237, 243, 245);
 }
 
-
 .hidden-form {
   display: none;
 }
-
-
-
 
 .button, .save-button {
   margin-bottom: 15px;

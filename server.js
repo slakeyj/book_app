@@ -35,7 +35,7 @@ client.on('error', err => console.log(err));
 app.get('/', getAllBooks);
 app.get('/search', newSearch);
 app.post('/search', searchForBook);
-app.post('/books/save', savedBooks);
+app.post('/books/save', saveBook);
 app.get('/books/:book_id', singleBookInfo);
 app.delete('/book/:book_id/delete', deleteBook);
 
@@ -67,12 +67,15 @@ function newSearch(request, response) {
   response.render('./pages/searches/new');
 }
 
-function savedBooks(request, response) {
+function saveBook(request, response) {
   const insertValues = `INSERT INTO bookdata (image, title, author, isbn, description, numberOfPages, averageRating, bookshelf) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
   console.log(request.body.numberOfPages);
   const bookValues = [request.body.image, request.body.title, request.body.author, request.body.isbn, request.body.description, request.body.numberOfPages, request.body.averageRating, request.body.bookshelf]
-
-  client.query(insertValues, bookValues);
+  console.log('THE BOOK VALUES', bookValues);
+  client.query(insertValues, bookValues).then(() => {
+    //send back to the home page to show all of their saved books
+    response.redirect('/');
+  })
 }
 
 
@@ -85,10 +88,10 @@ function updateBook(request, response) {
 }
 
 function editbook(request, response) {
-  const id = request.params.id;
-
+  const id = request.params.book_id;
   client.query(`SELECT * FROM bookdata WHERE id=$1`, [id]).then(sqlResult => {
     response.render('./pages/books/edit', { specificBook: sqlResult.rows[0] });
+    console.log('sql result 0', sqlResult.rows[0]);
   })
 }
 

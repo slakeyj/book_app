@@ -31,19 +31,19 @@
       <p id="rating">Avg Rating: <%= book.averageRating %></p>
       <p><%= book.isbn %></p>
     </section>
-    <div>
-      <button class="save-button">Save</button>
-    </div>
-    <form class="hidden-form" action="/books/save" method="post">
-      <input type="text" value="<%= book.image %>" name="image">
-      <input type="text" value="<%= book.title %>" name="title">
-      <input type="text" value="<%= book.author %>" name="author">
-      <input type="text" value="<%= book.isbn %>" name="isbn">
-      <input type="text" value="<%= book.description %>" name="description">
-      <input type="text" value="<%= book.numberofpages %>" name="numberOfPages">
-      <input type="text" value="<%= book.averagerating %>" name="averageRating">
-      <input type="text" value="<%= book.bookshelf %>" name="bookshelf">
-
+    <p></p>
+    <form id="save-form" action="/books/save" method="post">
+      <input type="hidden" value="<%= book.image %>" name="image">
+      <input type="hidden" value="<%= book.title %>" name="title">
+      <input type="hidden" value="<%= book.author %>" name="author">
+      <input type="hidden" value="<%= book.isbn %>" name="isbn">
+      <input type="hidden" value="<%= book.description %>" name="description">
+      <input type="hidden" value="<%= book.numberOfPages %>" name="numberOfPages">
+      <input type="hidden" value="<%= book.averageRating %>" name="averageRating">
+      <input type="text" value="Enter Bookshelf" name="bookshelf">
+      <div>
+        <button class="save-button">Save</button>
+      </div>
     </form>
   </section>
   <% }) %>
