@@ -5,25 +5,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link href="/styles/reset.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/base.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/icons.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/layout.css" type="text/css" rel="stylesheet" />
+  <link href="/styles/modules.css" type="text/css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <title>Update</title>
 </head>
+<header>
+  <%- include('../nav') %>
+</header>
 
 <body>
-  <section class="book-box">
-    <form id="update-form" action="/book/<%= specificBook.id %>/update" method="POST">
-      <input type="text" name="id" value="<%= specificBook.id %>">
-      <input type="text" name="_method" value="PUT">
-      <input type="hidden" value="<%= specificBook.image %>" name="image">
-      <input type="text" value="<%= specificBook.title %>" name="title">
-      <input type="text" value="<%= specificBook.author %>" name="author">
-      <input type="hidden" value="<%= specificBook.isbn %>" name="isbn">
-      <input type="text" value="<%= specificBook.description %>" name="description">
-      <input type="hidden" value="<%= specificBook.numberofpages %>" name="numberOfPages">
-      <input type="hidden" value="<%= specificBook.averagerating %>" name="averageRating">
-      <input type="text" value="<%= specificBook.bookshelf %>" name="bookshelf">
-      <a href="/"><button class="button">Update Book</button></a>
-    </form>
-  </section>
+
+  <h1 id="update-title">Update Book Data</h1>
+  <form id="update-form" action="/book/<%= specificBook.id %>/update" method="POST">
+    <input type="hidden" name="id" value="<%= specificBook.id %>">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" value="<%= specificBook.image %>" name="image">
+    <label>Title</label>
+    <input type="text" value="<%= specificBook.title %>" name="title">
+    <label>Author</label>
+    <input type="text" value="<%= specificBook.author %>" name="author">
+    <input type="hidden" value="<%= specificBook.isbn %>" name="isbn">
+    <label>Description</label>
+    <input type="text" value="<%= specificBook.description %>" name="description">
+    <input type="hidden" value="<%= specificBook.numberofpages %>" name="numberOfPages">
+    <input type="hidden" value="<%= specificBook.averagerating %>" name="averageRating">
+    <label>Bookshelf</label>
+    <input type="text" value="<%= specificBook.bookshelf %>" name="bookshelf">
+    <a id="update-book-button" href="/"><button class="button">Update Book</button></a>
+  </form>
+
 
 
 

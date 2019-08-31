@@ -17,29 +17,30 @@
   <header>
     <%- include('../nav') %>
   </header>
-  <h1>Search</h1>
 
-  <body id="index-body">
-    <form action="/search" method="POST">
-      <fieldset>
-        <legend>Search by Title or Author</legend>
-        <label for="search">
+  <body>
+    <div class="book-box" id="search-form">
+      <form action="/search" method="POST">
+        <fieldset>
+          <legend class="titles">Search by Title or Author</legend>
+          <label for="search">
+            <div id="title-author">
+              <span>Title</span>
+              <input id="radio-one" type="radio" name="search" value="title">
+          </label>
 
-          <span>Title</span>
-          <input type="radio" name="search" value="title">
-        </label>
+          <label for="search">
+            <span>Author</span>
+            <input type="radio" name="search" value="author">
+          </label>
 
-        <label for="search">
-          <span>Author</span>
-          <input type="radio" name="search" value="author">
-        </label>
-
-        <label for="search">
-          <input type="text" name="search" placeholder="insert book name or author">
-        </label>
-      </fieldset>
-
+          <label for="search">
+            <input id="search-box" type="text" name="search" placeholder="Name">
+          </label>
+    </div>
+    </fieldset>
     </form>
+    </div>
 
 
     </form>

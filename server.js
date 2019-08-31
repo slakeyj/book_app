@@ -38,7 +38,6 @@ app.post('/search', searchForBook);
 app.post('/books/save', saveBook);
 app.get('/books/:book_id', singleBookInfo);
 app.delete('/book/:book_id/delete', deleteBook);
-
 app.get('/book/:book_id/update', editbook);
 app.put('/book/:book_id/update', updateBook)
 
@@ -105,7 +104,7 @@ function singleBookInfo(request, response) {
 
 function deleteBook(request, response) {
   const id = request.params.book_id;
-  client.query(`DELETE FROM bookdata WHERE id=$1`, [id])
+  client.query(`DELETE FROM bookdata WHERE id=$1`, [id]);
   response.redirect('/');
 }
 

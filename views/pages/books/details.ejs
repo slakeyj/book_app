@@ -18,7 +18,7 @@
 
 <body>
   <h1 class="titles">Book Details</h1>
-  <section class="book-box">
+  <section class="book-box" id="search">
     <img src="<%= specificBook.image %>" />
     <h2>Title: <%= specificBook.title  %></h2>
     <h3>Author: <%= specificBook.author  %></h3>
@@ -29,13 +29,12 @@
       <p id="rating">Avg Rating: <%= specificBook.averagerating %></p>
       <p id="rating">Bookshelf <%= specificBook.bookshelf %></p>
     </section>
-    <a href="/book/<%= specificBook.id %>/update"><button>Update Book</button></a>
-    <form action="/book/<%= specificBook.id %>/delete" method="POST">
+    <form id="update-delete" action="/book/<%= specificBook.id %>/delete" method="POST">
+      <a class="button" href="/book/<%= specificBook.id %>/update">Update Book</a>
       <input type="hidden" name="id" value="<%= specificBook.id %>">
       <input type="hidden" name="_method" value="DELETE">
       <button class="button">Delete Book</button>
     </form>
-
   </section>
 </body>
 
