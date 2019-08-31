@@ -10,11 +10,13 @@
   <link href="/styles/icons.css" type="text/css" rel="stylesheet" />
   <link href="/styles/layout.css" type="text/css" rel="stylesheet" />
   <link href="/styles/modules.css" type="text/css" rel="stylesheet" />
-  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <title>Search Results</title>
 </head>
 <header>
   <%- include('../nav') %>
-  <h1>Search Results</h1>
+  <h1 class="titles">Search Results</h1>
 </header>
 
 <body>
@@ -31,26 +33,22 @@
       <p id="rating">Avg Rating: <%= book.averageRating %></p>
       <p><%= book.isbn %></p>
     </section>
-    <div>
-      <button class="save-button">Save</button>
-    </div>
-    <form class="hidden-form" action="/books/save" method="post">
-      <input type="text" value="<%= book.image %>" name="image">
-      <input type="text" value="<%= book.title %>" name="title">
-      <input type="text" value="<%= book.author %>" name="author">
-      <input type="text" value="<%= book.isbn %>" name="isbn">
-      <input type="text" value="<%= book.description %>" name="description">
-      <input type="text" value="<%= book.numberofpages %>" name="numberOfPages">
-      <input type="text" value="<%= book.averagerating %>" name="averageRating">
-      <input type="text" value="<%= book.bookshelf %>" name="bookshelf">
 
+    <form id="save-form" action="/books/save" method="post">
+      <input type="hidden" value="<%= book.image %>" name="image">
+      <input type="hidden" value="<%= book.title %>" name="title">
+      <input type="hidden" value="<%= book.author %>" name="author">
+      <input type="hidden" value="<%= book.isbn %>" name="isbn">
+      <input class="toggle-value" type="hidden" value="<%= book.description %>" name="description">
+      <input type="hidden" value="<%= book.numberOfPages %>" name="numberOfPages">
+      <input type="hidden" value="<%= book.averageRating %>" name="averageRating">
+      <input class="toggle-value" type="hidden" value="Enter Bookshelf" name="bookshelf">
+      <button class="save-button" id="show-form-button">Show Form</button>
+      <button class="save-button" id="save-data">Save</button>
     </form>
   </section>
   <% }) %>
-
-
 </body>
-
 <script src="app.js"></script>
 <footer>
 </footer>

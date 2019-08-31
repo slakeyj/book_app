@@ -1,5 +1,9 @@
+
 $(document).ready(function () {
-  $('.save-button').click(function () {
-    $('.hidden-form').toggle();
+  $('#show-form-button"').click(function (event) {
+    event.preventDefault();
+    $('.toggle-value').attr('type', 'text');
+    $('#save-data').toggle();
+    $('#show-form-button"').toggle()
   });
 });

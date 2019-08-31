@@ -7,6 +7,7 @@ body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  font-family: 'Nunito', sans-serif;
 }
 
 ul {
@@ -40,42 +41,22 @@ h2, h3, h4 {
   margin: 15px;
 }
 
+#update-delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
+}
+
+#update-anchor {
+  text-decoration: none;
+
+}
 
 form {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-}
-
-.button {
-  border-top: 1px solid #a161ba;
-  background: #9b82e0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#543e9c), to(#9b82e0));
-  background: -webkit-linear-gradient(top, #543e9c, #9b82e0);
-  background: -moz-linear-gradient(top, #543e9c, #9b82e0);
-  background: -ms-linear-gradient(top, #543e9c, #9b82e0);
-  background: -o-linear-gradient(top, #543e9c, #9b82e0);
-  padding: 17.5px 35px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  box-shadow: rgba(0,0,0,1) 0 1px 0;
-  text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  color: white;
-  font-size: 21px;
-  font-family: Helvetica, Arial, Sans-Serif;
-  text-decoration: none;
-  vertical-align: middle;
-  }
-
-
-
-#index-body {
-  border: 1px solid black;
-
 }
 
 legend {
@@ -104,6 +85,65 @@ legend {
   background-color: rgb(253, 245, 254);
   width: 100%;
   justify-content: center;
+}
+
+#form-1 {
+  display: none;
+}
+
+#update-form {
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 20px 0px;
+  background-color: rgb(253, 245, 254);
+  width: 100%;
+  justify-content: center;
+}
+
+#update-form input {
+  width: 20%;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+#update-form label {
+  margin: 10px auto;
+}
+
+#update-form button {
+  margin-bottom: 20px;
+}
+
+#save-form {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#save-form input {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 20%;
+  height: 40px;
+}
+
+#title-author {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+
+#search-form {
+  
+  padding-top: 200px;
+  padding-bottom: 600px;
+  width: 80%;
+  margin: auto;
 }
 
 /* TABLET */
